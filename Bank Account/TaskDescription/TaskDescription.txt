@@ -1,0 +1,18 @@
+I. C# TESTS - BANK ACCOUNT
+
+Create a bank account's class with methods for deposit and withdrawal of money. The creation of the withdrawal's method has
+to be complied with 2 main conditions:
+
+o	If the withdrawal's amount is less than 1000, the transfer fee must be 5% of the withdrawn sum;
+o	If the withdrawal's amount is greater than 1000, the transfer fee must be 2% of the withdrawn sum.
+
+Write some tests in C# against the bank account's class, that test its functionality. Don't forget to check the following
+important test scenarios: 
+
+•	When you initialize the bank account with negative sum, there should be thrown an argument exception;
+•	The withdrawal's method gets the right amount of money for a bank transfer.
+
+
+II. ASSERTS
+
+You can assert so much things. There is no "right" way to assert something. It is up to you to choose how to assert. Use at least 5 different type of asserts for these tests, using unit testing framework.
