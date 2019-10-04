@@ -1,11 +1,14 @@
 C# TESTS - GAME
 
-We have developed a new game, called “The General”. The player takes the role of a general, that gives battle orders on a board, that is 200 x 300 in dimension (x and y coordinates). The possible actions are “attack field” and “defend field”. The success of the command is determined in the following way:
+We have developed a new game, called “The General”. The player takes the role of a general, that gives battle orders on a 
+board, that is 200 x 300 in dimension (x and y coordinates). The possible actions are “attack field” and “defend field”. 
+The success of the command is determined in the following way:
 
 •	Attack – if (x + y – 5) is even it is successful, otherwise it is not.
 •	Defend – if (x * y – 5) is even it is successful, otherwise it is not.
 
-You would like to add some tests to ensure that the logic is (and will remain) correct. The class, responsible for determining the success of the operations, is called OperationSuccessCalculator. It implements the following interface:
+You would like to add some tests to ensure that the logic is (and will remain) correct. The class, which is responsible for 
+determining the success of the operations, is called OperationSuccessCalculator. It implements the following interface:
 
 public interface IOperationSuccessCalculator
 {
