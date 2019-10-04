@@ -15,4 +15,5 @@ important test scenarios:
 
 II. ASSERTS
 
-You can assert so much things. There is no "right" way to assert something. It is up to you to choose how to assert. Use at least 5 different type of asserts for these tests, using unit testing framework.
+You can assert so much things. There is no "right" way to assert something. It is up to you to choose how to assert. Use at 
+least 5 different type of asserts for these tests, using unit testing framework.
