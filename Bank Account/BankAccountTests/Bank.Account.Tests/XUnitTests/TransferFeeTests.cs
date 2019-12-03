@@ -84,7 +84,7 @@
             ArgumentException expression =
                 Assert.Throws<ArgumentException>(() => this.fee.DefineCorrectTransferFee(this.chosenSumForWithdrawal));
 
-            Assert.Equal(expression.Message, ExceptionConstants.WITHDRAWAL);
+            Assert.Equal("The withdrawn sum can not be negative or equal to zero.", expression.Message);
         }
     }
 }
