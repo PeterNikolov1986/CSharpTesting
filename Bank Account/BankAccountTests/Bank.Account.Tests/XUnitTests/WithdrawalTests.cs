@@ -8,6 +8,9 @@
 
     public class WithdrawalTests
     {
+        private const string WITHDRAWAL_ERROR_MESSAGE = "The withdrawn sum can not be negative or equal to zero.";
+        private const string INITIAL_SUM_ERROR_MESSAGE = "The initial sum in a bank account can not be less than the withdrawn one.";
+
         private readonly BankAccount account;
         private readonly IMoneyOptions options;
 
@@ -104,7 +107,7 @@
             ArgumentException expression = 
                 Assert.Throws<ArgumentException>(() => this.account.WithdrawSum(this.chosenSumForWithdrawal));
 
-            Assert.Equal(expression.Message, ExceptionConstants.ACCOUNT_WITHDRAWAL);
+            Assert.Equal(expression.Message, INITIAL_SUM_ERROR_MESSAGE);
         }
 
         [Theory]
@@ -132,7 +135,7 @@
             ArgumentException expression =
                 Assert.Throws<ArgumentException>(() => this.account.WithdrawSum(this.chosenSumForWithdrawal));
 
-            Assert.Equal(expression.Message, ExceptionConstants.ACCOUNT_WITHDRAWAL);
+            Assert.Equal(expression.Message, INITIAL_SUM_ERROR_MESSAGE);
         }
 
         [Theory]
@@ -160,7 +163,7 @@
             ArgumentException expression =
                 Assert.Throws<ArgumentException>(() => this.account.WithdrawSum(this.chosenSumForWithdrawal));
 
-            Assert.Equal(expression.Message, ExceptionConstants.ACCOUNT_WITHDRAWAL);
+            Assert.Equal(expression.Message, INITIAL_SUM_ERROR_MESSAGE);
         }
 
         [Theory]
@@ -184,7 +187,7 @@
             ArgumentException expression =
                 Assert.Throws<ArgumentException>(() => this.account.WithdrawSum(this.chosenSumForWithdrawal));
 
-            Assert.Equal(expression.Message, ExceptionConstants.WITHDRAWAL);
+            Assert.Equal(expression.Message, WITHDRAWAL_ERROR_MESSAGE);
         }
 
         [Theory]
@@ -208,7 +211,7 @@
             ArgumentException expression =
                 Assert.Throws<ArgumentException>(() => this.account.WithdrawSum(this.chosenSumForWithdrawal));
 
-            Assert.Equal(expression.Message, ExceptionConstants.WITHDRAWAL);
+            Assert.Equal(expression.Message, WITHDRAWAL_ERROR_MESSAGE);
         }
 
         [Theory]
@@ -232,7 +235,7 @@
             ArgumentException expression =
                 Assert.Throws<ArgumentException>(() => this.account.WithdrawSum(this.chosenSumForWithdrawal));
 
-            Assert.Equal(expression.Message, ExceptionConstants.WITHDRAWAL);
+            Assert.Equal(expression.Message, WITHDRAWAL_ERROR_MESSAGE);
         }
     }
 }
