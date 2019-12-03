@@ -9,13 +9,14 @@
     [TestFixture]
     public class DepositTests
     {
-        private readonly BankAccount account;
-        private readonly IMoneyOptions options;
-        private decimal deposit;
-        private decimal accountAmountAfterDeposit;
-
         private static readonly int[] fourPositions = new int[] { 0, 1, 2, 3 };
         private static readonly int[] twoPositions = new int[] { 0, 1 };
+
+        private readonly BankAccount account;
+        private readonly IMoneyOptions options;
+
+        private decimal deposit;
+        private decimal accountAmountAfterDeposit;
 
         public DepositTests()
         {
