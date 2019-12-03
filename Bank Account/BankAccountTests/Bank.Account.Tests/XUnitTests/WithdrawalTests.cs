@@ -10,6 +10,7 @@
     {
         private readonly BankAccount account;
         private readonly IMoneyOptions options;
+
         private decimal chosenSumForWithdrawal;
         private decimal withdrawal;
         private decimal accountAmountAfterWithdrawal;

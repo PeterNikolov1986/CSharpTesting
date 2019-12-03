@@ -10,6 +10,7 @@
     {
         private readonly ITransferFee fee;
         private readonly IMoneyOptions options;
+
         private decimal chosenSumForWithdrawal;
         private decimal expectedTransferFee;
         private decimal transferFee;
