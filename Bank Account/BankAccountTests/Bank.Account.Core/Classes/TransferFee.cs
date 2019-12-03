@@ -12,7 +12,7 @@
         {
             if (chosenSumForWithdrawal <= DigitConstants.ZERO)
             {
-                throw new ArgumentException(ExceptionConstants.WITHDRAWAL);
+                throw new ArgumentException("The withdrawn sum can not be negative or equal to zero.");
             }
             else
             {
