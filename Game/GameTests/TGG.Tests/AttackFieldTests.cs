@@ -9,6 +9,10 @@
     [TestFixture]
     public class AttackFieldTests
     {
+        private const string ATTACK_FIELD_ERROR_MESSAGE = "The attack field's command is not successful.";
+        private const string X_COORD_ERROR_MESSAGE = "Invalid value of the X coordinate.";
+        private const string Y_COORD_ERROR_MESSAGE = "Invalid value of the Y coordinate.";
+
         private readonly IOperationSuccessCalculator calculator;
 
         public AttackFieldTests()
@@ -57,7 +61,7 @@
         {
             ArgumentException expression = Assert.Throws<ArgumentException>(() => this.calculator.IsAttackSuccesful(x, y));
 
-            Assert.AreEqual(expression.Message, "The attack field's command is not successful.");
+            Assert.AreEqual(expression.Message, ATTACK_FIELD_ERROR_MESSAGE);
         }
 
         [TestCase((int)ValidBoundaryTypes.Zero, (int)InvalidBoundaryTypes.Negative)]
@@ -81,7 +85,7 @@
         {
             ArgumentException expression = Assert.Throws<ArgumentException>(() => this.calculator.IsAttackSuccesful(x, y));
 
-            Assert.AreEqual(expression.Message, "Invalid value of the Y coordinate.");
+            Assert.AreEqual(expression.Message, Y_COORD_ERROR_MESSAGE);
         }
 
         [TestCase((int)ValidAverageTypes.FirstX, (int)InvalidBoundaryTypes.Negative)]
@@ -97,7 +101,7 @@
         {
             ArgumentException expression = Assert.Throws<ArgumentException>(() => this.calculator.IsAttackSuccesful(x, y));
 
-            Assert.AreEqual(expression.Message, "Invalid value of the Y coordinate.");
+            Assert.AreEqual(expression.Message, Y_COORD_ERROR_MESSAGE);
         }
 
         [TestCase((int)InvalidBoundaryTypes.Negative, (int)ValidBoundaryTypes.Zero)]
@@ -121,7 +125,7 @@
         {
             ArgumentException expression = Assert.Throws<ArgumentException>(() => this.calculator.IsAttackSuccesful(x, y));
 
-            Assert.AreEqual(expression.Message, "Invalid value of the X coordinate.");
+            Assert.AreEqual(expression.Message, X_COORD_ERROR_MESSAGE);
         }
 
         [TestCase((int)InvalidBoundaryTypes.Negative, (int)ValidAverageTypes.SecondY)]
@@ -137,7 +141,7 @@
         {
             ArgumentException expression = Assert.Throws<ArgumentException>(() => this.calculator.IsAttackSuccesful(x, y));
 
-            Assert.AreEqual(expression.Message, "Invalid value of the X coordinate.");
+            Assert.AreEqual(expression.Message, X_COORD_ERROR_MESSAGE);
         }
 
         [TestCase((int)InvalidBoundaryTypes.Negative, (int)InvalidBoundaryTypes.Negative)]
@@ -157,9 +161,9 @@
         {
             ArgumentException expression = Assert.Throws<ArgumentException>(() => this.calculator.IsAttackSuccesful(x, y));
 
-            Assert.AreEqual(expression.Message, "Invalid value of the X coordinate.");
-            Assert.AreNotEqual(expression.Message, "Invalid value of the Y coordinate.");
-            Assert.AreNotEqual(expression.Message, "The attack field's command is not successful.");
+            Assert.AreEqual(expression.Message, X_COORD_ERROR_MESSAGE);
+            Assert.AreNotEqual(expression.Message, Y_COORD_ERROR_MESSAGE);
+            Assert.AreNotEqual(expression.Message, ATTACK_FIELD_ERROR_MESSAGE);
         }
     }
 }
