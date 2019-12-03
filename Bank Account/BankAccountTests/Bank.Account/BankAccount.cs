@@ -25,11 +25,11 @@
         {
             if (this.AccountAmount < DigitConstants.ZERO)
             {
-                throw new ArgumentException(ExceptionConstants.INIT_FIRST);
+                throw new ArgumentException("A bank account's initialization with negative sum is impossible.");
             }
             else if (this.AccountAmount > DigitConstants.ZERO)
             {
-                throw new ArgumentException(ExceptionConstants.INIT_SECOND);
+                throw new ArgumentException("A bank account's initialization doesn't need deposit of money.");
             }
 
             return this.AccountAmount;
@@ -39,11 +39,11 @@
         {
             if (depositedSum <= DigitConstants.ZERO)
             {
-                throw new ArgumentException(ExceptionConstants.DEPOSIT);
+                throw new ArgumentException("The deposited sum can not be negative or equal to zero.");
             }
             else if (this.AccountAmount < DigitConstants.ZERO)
             {
-                throw new ArgumentException(ExceptionConstants.ACCOUNT_DEPOSIT);
+                throw new ArgumentException("The initial sum in a bank account can not be negative.");
             }
 
             return depositedSum;
@@ -56,7 +56,7 @@
 
             if (this.AccountAmount < withdrawnSum)
             {
-                throw new ArgumentException(ExceptionConstants.ACCOUNT_WITHDRAWAL);
+                throw new ArgumentException("The initial sum in a bank account can not be less than the withdrawn one.");
             }
 
             return withdrawnSum;
