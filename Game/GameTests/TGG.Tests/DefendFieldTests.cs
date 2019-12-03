@@ -80,6 +80,15 @@
             Assert.Throws<ArgumentException>(() => this.calculator.IsDefenceSuccesful(x, y));
         }
 
+        [TestCase((int)ValidAverageTypes.FirstX, (int)InvalidBoundaryTypes.Negative)]
+        [TestCase((int)ValidAverageTypes.FirstX, (int)InvalidBoundaryTypes.Y)]
+        public void EvenDefendFieldAttempt_WithInvalidValuesOfY_ShouldHave_AppropriateErrorMessage(int x, int y)
+        {
+            ArgumentException expression = Assert.Throws<ArgumentException>(() => this.calculator.IsDefenceSuccesful(x, y));
+
+            Assert.AreEqual(expression.Message, Y_COORD_ERROR_MESSAGE);
+        }
+
         [TestCase((int)ValidBoundaryTypes.Zero, (int)InvalidBoundaryTypes.Negative)]
         [TestCase((int)ValidBoundaryTypes.Zero, (int)InvalidBoundaryTypes.Y)]
         [TestCase((int)ValidAverageTypes.SecondX, (int)InvalidBoundaryTypes.Negative)]
@@ -91,11 +100,33 @@
             Assert.Throws<ArgumentException>(() => this.calculator.IsDefenceSuccesful(x, y));
         }
 
+        [TestCase((int)ValidBoundaryTypes.Zero, (int)InvalidBoundaryTypes.Negative)]
+        [TestCase((int)ValidBoundaryTypes.Zero, (int)InvalidBoundaryTypes.Y)]
+        [TestCase((int)ValidAverageTypes.SecondX, (int)InvalidBoundaryTypes.Negative)]
+        [TestCase((int)ValidAverageTypes.SecondX, (int)InvalidBoundaryTypes.Y)]
+        [TestCase((int)ValidBoundaryTypes.X, (int)InvalidBoundaryTypes.Negative)]
+        [TestCase((int)ValidBoundaryTypes.X, (int)InvalidBoundaryTypes.Y)]
+        public void OddDefendFieldAttempt_WithInvalidValuesOfY_ShouldHave_AppropriateErrorMessage(int x, int y)
+        {
+            ArgumentException expression = Assert.Throws<ArgumentException>(() => this.calculator.IsDefenceSuccesful(x, y));
+
+            Assert.AreEqual(expression.Message, Y_COORD_ERROR_MESSAGE);
+        }
+
         [TestCase((int)InvalidBoundaryTypes.Negative, (int)ValidAverageTypes.SecondY)]
         [TestCase((int)InvalidBoundaryTypes.X, (int)ValidAverageTypes.SecondY)]
         public void EvenDefendFieldAttempt_WithInvalidValuesOfX_ShouldThrow_ArgumentException(int x, int y)
         {
             Assert.Throws<ArgumentException>(() => this.calculator.IsDefenceSuccesful(x, y));
+        }
+
+        [TestCase((int)InvalidBoundaryTypes.Negative, (int)ValidAverageTypes.SecondY)]
+        [TestCase((int)InvalidBoundaryTypes.X, (int)ValidAverageTypes.SecondY)]
+        public void EvenDefendFieldAttempt_WithInvalidValuesOfX_ShouldHave_AppropriateErrorMessage(int x, int y)
+        {
+            ArgumentException expression = Assert.Throws<ArgumentException>(() => this.calculator.IsDefenceSuccesful(x, y));
+
+            Assert.AreEqual(expression.Message, X_COORD_ERROR_MESSAGE);
         }
 
         [TestCase((int)InvalidBoundaryTypes.Negative, (int)ValidBoundaryTypes.Zero)]
@@ -109,6 +140,19 @@
             Assert.Throws<ArgumentException>(() => this.calculator.IsDefenceSuccesful(x, y));
         }
 
+        [TestCase((int)InvalidBoundaryTypes.Negative, (int)ValidBoundaryTypes.Zero)]
+        [TestCase((int)InvalidBoundaryTypes.X, (int)ValidBoundaryTypes.Zero)]
+        [TestCase((int)InvalidBoundaryTypes.Negative, (int)ValidAverageTypes.FirstY)]
+        [TestCase((int)InvalidBoundaryTypes.X, (int)ValidAverageTypes.FirstY)]
+        [TestCase((int)InvalidBoundaryTypes.Negative, (int)ValidBoundaryTypes.Y)]
+        [TestCase((int)InvalidBoundaryTypes.X, (int)ValidBoundaryTypes.Y)]
+        public void OddDefendFieldAttempt_WithInvalidValuesOfX_ShouldHave_AppropriateErrorMessage(int x, int y)
+        {
+            ArgumentException expression = Assert.Throws<ArgumentException>(() => this.calculator.IsDefenceSuccesful(x, y));
+
+            Assert.AreEqual(expression.Message, X_COORD_ERROR_MESSAGE);
+        }
+
         [TestCase((int)InvalidBoundaryTypes.Negative, (int)InvalidBoundaryTypes.Negative)]
         [TestCase((int)InvalidBoundaryTypes.X, (int)InvalidBoundaryTypes.Negative)]
         [TestCase((int)InvalidBoundaryTypes.Negative, (int)InvalidBoundaryTypes.Y)]
@@ -116,6 +160,19 @@
         public void DefendFieldAttempt_WithInvalidValues_ShouldThrow_ArgumentException(int x, int y)
         {
             Assert.Throws<ArgumentException>(() => this.calculator.IsDefenceSuccesful(x, y));
+        }
+
+        [TestCase((int)InvalidBoundaryTypes.Negative, (int)InvalidBoundaryTypes.Negative)]
+        [TestCase((int)InvalidBoundaryTypes.X, (int)InvalidBoundaryTypes.Negative)]
+        [TestCase((int)InvalidBoundaryTypes.Negative, (int)InvalidBoundaryTypes.Y)]
+        [TestCase((int)InvalidBoundaryTypes.X, (int)InvalidBoundaryTypes.Y)]
+        public void DefendFieldAttempt_WithInvalidValues_ShouldHave_AppropriateErrorMessage(int x, int y)
+        {
+            ArgumentException expression = Assert.Throws<ArgumentException>(() => this.calculator.IsDefenceSuccesful(x, y));
+
+            Assert.AreEqual(expression.Message, X_COORD_ERROR_MESSAGE);
+            Assert.AreNotEqual(expression.Message, Y_COORD_ERROR_MESSAGE);
+            Assert.AreNotEqual(expression.Message, DEFEND_FIELD_ERROR_MESSAGE);
         }
     }
 }
