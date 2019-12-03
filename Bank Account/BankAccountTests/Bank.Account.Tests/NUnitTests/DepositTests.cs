@@ -9,8 +9,8 @@
     [TestFixture]
     public class DepositTests
     {
-        private const string DEPOSITED_SUM_ERROR_MESSAGE = "The deposited sum can not be negative or equal to zero.";
-        private const string ACCOUNT_AMOUNT_ERROR_MESSAGE = "The initial sum in a bank account can not be negative.";
+        private const string DEPOSIT_ERROR_MESSAGE = "The deposited sum can not be negative or equal to zero.";
+        private const string INITIAL_SUM_ERROR_MESSAGE = "The initial sum in a bank account can not be negative.";
 
         private static readonly int[] fourPositions = new int[] { 0, 1, 2, 3 };
         private static readonly int[] twoPositions = new int[] { 0, 1 };
@@ -69,7 +69,7 @@
             this.deposit = this.options.CollectNegativeOrZeroValues(position);
             ArgumentException expression = Assert.Throws<ArgumentException>(() => this.account.DepositSum(this.deposit));
 
-            Assert.That(expression.Message == DEPOSITED_SUM_ERROR_MESSAGE);
+            Assert.That(expression.Message == DEPOSIT_ERROR_MESSAGE);
         }
 
         [TestCaseSource(nameof(fourPositions))]
@@ -88,7 +88,7 @@
             this.deposit = this.options.CollectPositiveValues(position);
             ArgumentException expression = Assert.Throws<ArgumentException>(() => this.account.DepositSum(this.deposit));
 
-            Assert.That(expression.Message == ACCOUNT_AMOUNT_ERROR_MESSAGE);
+            Assert.That(expression.Message == INITIAL_SUM_ERROR_MESSAGE);
         }
 
         [TestCaseSource(nameof(twoPositions))]
@@ -107,8 +107,8 @@
             this.deposit = this.options.CollectNegativeOrZeroValues(position);
             ArgumentException expression = Assert.Throws<ArgumentException>(() => this.account.DepositSum(this.deposit));
 
-            Assert.That(expression.Message == DEPOSITED_SUM_ERROR_MESSAGE);
-            Assert.AreNotEqual(expression.Message, ACCOUNT_AMOUNT_ERROR_MESSAGE);
+            Assert.That(expression.Message == DEPOSIT_ERROR_MESSAGE);
+            Assert.AreNotEqual(expression.Message, INITIAL_SUM_ERROR_MESSAGE);
         }
 
         [TestCaseSource(nameof(twoPositions))]
@@ -127,7 +127,7 @@
             this.deposit = this.options.CollectNegativeOrZeroValues(position);
             ArgumentException expression = Assert.Throws<ArgumentException>(() => this.account.DepositSum(this.deposit));
 
-            Assert.That(expression.Message == DEPOSITED_SUM_ERROR_MESSAGE);
+            Assert.That(expression.Message == DEPOSIT_ERROR_MESSAGE);
         }
     }
 }
