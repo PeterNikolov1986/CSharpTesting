@@ -8,18 +8,13 @@
     public class BankAccount
     {
         private readonly ITransferFee fee;
-        private decimal accountAmount;
 
         public BankAccount()
         {
             this.fee = new TransferFee();
         }
 
-        public decimal AccountAmount
-        {
-            get { return this.accountAmount; }
-            set { this.accountAmount = value; }
-        }
+        public decimal AccountAmount { get; set; }
 
         public decimal InitializeEmptyBankAccount()
         {
