@@ -9,6 +9,10 @@
     [TestFixture]
     public class DefendFieldTests
     {
+        private const string DEFEND_FIELD_ERROR_MESSAGE = "The defend field's command is not successful.";
+        private const string X_COORD_ERROR_MESSAGE = "Invalid value of the X coordinate.";
+        private const string Y_COORD_ERROR_MESSAGE = "Invalid value of the Y coordinate.";
+
         private readonly IOperationSuccessCalculator calculator;
 
         public DefendFieldTests()
@@ -45,6 +49,28 @@
         public void UnsuccessfulDefendFieldAttempt_WithValidValues_ShouldThrow_ArgumentException(int x, int y)
         {
             Assert.Throws<ArgumentException>(() => this.calculator.IsDefenceSuccesful(x, y));
+        }
+
+        [TestCase((int)ValidBoundaryTypes.Zero, (int)ValidBoundaryTypes.Zero)]
+        [TestCase((int)ValidBoundaryTypes.Zero, (int)ValidAverageTypes.FirstY)]
+        [TestCase((int)ValidBoundaryTypes.Zero, (int)ValidAverageTypes.SecondY)]
+        [TestCase((int)ValidBoundaryTypes.Zero, (int)ValidBoundaryTypes.Y)]
+        [TestCase((int)ValidAverageTypes.FirstX, (int)ValidBoundaryTypes.Zero)]
+        [TestCase((int)ValidAverageTypes.FirstX, (int)ValidAverageTypes.FirstY)]
+        [TestCase((int)ValidAverageTypes.FirstX, (int)ValidBoundaryTypes.Y)]
+        [TestCase((int)ValidAverageTypes.SecondX, (int)ValidBoundaryTypes.Zero)]
+        [TestCase((int)ValidAverageTypes.SecondX, (int)ValidAverageTypes.FirstY)]
+        [TestCase((int)ValidAverageTypes.SecondX, (int)ValidAverageTypes.SecondY)]
+        [TestCase((int)ValidAverageTypes.SecondX, (int)ValidBoundaryTypes.Y)]
+        [TestCase((int)ValidBoundaryTypes.X, (int)ValidBoundaryTypes.Zero)]
+        [TestCase((int)ValidBoundaryTypes.X, (int)ValidAverageTypes.FirstY)]
+        [TestCase((int)ValidBoundaryTypes.X, (int)ValidAverageTypes.SecondY)]
+        [TestCase((int)ValidBoundaryTypes.X, (int)ValidBoundaryTypes.Y)]
+        public void UnsuccessfulDefendFieldAttempt_WithValidValues_ShouldHave_AppropriateErrorMessage(int x, int y)
+        {
+            ArgumentException expression = Assert.Throws<ArgumentException>(() => this.calculator.IsDefenceSuccesful(x, y));
+
+            Assert.AreEqual(expression.Message, DEFEND_FIELD_ERROR_MESSAGE);
         }
 
         [TestCase((int)ValidAverageTypes.FirstX, (int)InvalidBoundaryTypes.Negative)]
