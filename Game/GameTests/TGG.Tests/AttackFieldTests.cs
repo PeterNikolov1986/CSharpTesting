@@ -43,7 +43,7 @@
         [TestCase((int)ValidBoundaryTypes.X, (int)ValidBoundaryTypes.Zero)]
         [TestCase((int)ValidBoundaryTypes.X, (int)ValidAverageTypes.FirstY)]
         [TestCase((int)ValidBoundaryTypes.X, (int)ValidBoundaryTypes.Y)]
-        public void AttackFieldAttempt_WithValidValues_ShouldThrow_ArgumentException(int x, int y)
+        public void UnsuccessfulAttackFieldAttempt_WithValidValues_ShouldThrow_ArgumentException(int x, int y)
         {
             Assert.Throws<ArgumentException>(() => this.calculator.IsAttackSuccesful(x, y));
         }
