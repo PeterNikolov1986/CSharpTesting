@@ -7,7 +7,7 @@
     [TestFixture]
     public class InitializationTests
     {
-        private const string NEGATIVE_ACCOUNT_INITIALIZATION_ERROR_MESSAGE = "A bank account's initialization with negative sum is impossible.";
+        private const string NEGATIVE_INITIAL_SUM_ERROR_MESSAGE = "A bank account's initialization with negative sum is impossible.";
         private const string ACCOUNT_INITIALIZATION_ERROR_MESSAGE = "A bank account's initialization doesn't need deposit of money.";
 
         private readonly BankAccount account;
@@ -41,7 +41,7 @@
             this.account.AccountAmount = DigitConstants.NEGATIVE;
             ArgumentException expression = Assert.Throws<ArgumentException>(() => this.account.InitializeEmptyBankAccount());
 
-            Assert.That(expression.Message == NEGATIVE_ACCOUNT_INITIALIZATION_ERROR_MESSAGE);
+            Assert.That(expression.Message == NEGATIVE_INITIAL_SUM_ERROR_MESSAGE);
             Assert.AreNotEqual(expression.Message, ACCOUNT_INITIALIZATION_ERROR_MESSAGE);
         }
 
@@ -60,7 +60,7 @@
             ArgumentException expression = Assert.Throws<ArgumentException>(() => this.account.InitializeEmptyBankAccount());
 
             Assert.That(expression.Message == ACCOUNT_INITIALIZATION_ERROR_MESSAGE);
-            Assert.AreNotEqual(expression.Message, NEGATIVE_ACCOUNT_INITIALIZATION_ERROR_MESSAGE);
+            Assert.AreNotEqual(expression.Message, NEGATIVE_INITIAL_SUM_ERROR_MESSAGE);
         }
     }
 }
