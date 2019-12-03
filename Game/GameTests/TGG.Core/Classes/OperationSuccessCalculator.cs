@@ -1,7 +1,6 @@
 ﻿namespace TGG.Core.Classes
 {
     using System;
-    using TGG.Core.Constants;
     using TGG.Core.Interfaces;
 
     public class OperationSuccessCalculator : IOperationSuccessCalculator
@@ -15,28 +14,28 @@
 
         public bool IsAttackSuccesful(int x, int y)
         {
-            this.board.X = x;
-            this.board.Y = y;
+            x = this.board.GetXCoordinate(x);
+            y = this.board.GetYCoordinate(y);
 
-            if ((this.board.X + this.board.Y - 5) % 2 != 0 )
+            if ((x + y - 5) % 2 != 0 )
             {
-                throw new ArgumentException(ExceptionConstants.ATTACK_FIELD);
+                throw new ArgumentException("The attack field's command is not successful.");
             }
 
-            return (this.board.X + this.board.Y - 5) % 2 == 0;
+            return (x + y - 5) % 2 == 0;
         }
 
         public bool IsDefenceSuccesful(int x, int y)
         {
-            this.board.X = x;
-            this.board.Y = y;
+            x = this.board.GetXCoordinate(x);
+            y = this.board.GetYCoordinate(y);
 
-            if ((this.board.X * this.board.Y - 5) % 2 != 0)
+            if ((x * y - 5) % 2 != 0)
             {
-                throw new ArgumentException(ExceptionConstants.DEFEND_FIELD);
+                throw new ArgumentException("The defend field's command is not successful.");
             }
 
-            return (this.board.X * this.board.Y - 5) % 2 == 0;
+            return (x * y - 5) % 2 == 0;
         }
     }
 }

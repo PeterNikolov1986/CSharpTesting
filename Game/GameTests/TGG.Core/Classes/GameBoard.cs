@@ -1,45 +1,29 @@
 ﻿namespace TGG.Core.Classes
 {
     using System;
-    using TGG.Core.Constants;
     using TGG.Core.Interfaces;
     using TGG.Core.Shared.Types;
 
     public class GameBoard : IGameBoard
     {
-        private int x;
-        private int y;
-
-        public int X
+        public int GetXCoordinate(int x)
         {
-            get { return this.x; }
-            set 
+            if (x < (int)ValidBoundaryTypes.Zero || x > (int)ValidBoundaryTypes.X)
             {
-                if (this.x >= (int)ValidBoundaryTypes.Zero && this.x <= (int)ValidBoundaryTypes.X)
-                {
-                    this.x = value;
-                }
-                else
-                {
-                    throw new ArgumentException(ExceptionConstants.X);
-                }
-            }   
+                throw new ArgumentException("Invalid value of the X coordinate.");
+            }
+
+            return x;
         }
 
-        public int Y 
+        public int GetYCoordinate(int y)
         {
-            get { return this.y; }
-            set 
+            if (y < (int)ValidBoundaryTypes.Zero || y > (int)ValidBoundaryTypes.Y)
             {
-                if (this.y >= (int)ValidBoundaryTypes.Zero && this.y <= (int)ValidBoundaryTypes.Y)
-                {
-                    this.y = value;
-                }
-                else
-                {
-                    throw new ArgumentException(ExceptionConstants.Y);
-                }
+                throw new ArgumentException("Invalid value of the Y coordinate.");
             }
+
+            return y;
         }
     }
 }

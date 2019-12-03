@@ -2,8 +2,8 @@
 {
     public interface IGameBoard
     {
-        int X { get; set; }
+        int GetXCoordinate(int x);
 
-        int Y { get; set; }
+        int GetYCoordinate(int y);
     }
 }
